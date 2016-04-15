@@ -46,11 +46,12 @@ class Handler(BaseHandler):
             self.deal.saveBrief(brief, dir_path, name)
             for img in imgs:
                 url = img.attr.src
+                img_url = 'https:'+url
                 if url:
                     extension = self.deal.getExtension(url)
                     file_name = name + str(count) + '.' + extension
                     count += 1
-                    self.crawl(img.attr.src, callback=self.save_img,
+                    self.crawl(img_url, callback=self.save_img,
                                save={'dir_path': dir_path, 'file_name': file_name})
 
     def save_img(self, response):
